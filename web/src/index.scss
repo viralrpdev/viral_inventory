@@ -88,6 +88,7 @@ input[type='number']::-webkit-outer-spin-button {
   height: 100%;
   width: 100%;
   color: white;
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
 .context-menu-list {
@@ -153,6 +154,7 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: center;
   height: 100%;
   gap: $lg;
   padding: $xl;
