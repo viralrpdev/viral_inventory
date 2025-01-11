@@ -19,69 +19,38 @@ debugData([
       leftInventory: {
         id: 'test',
         type: 'player',
-        slots: 50,
+        slots: 20,
         label: 'Bob Smith',
         weight: 3000,
         maxWeight: 5000,
         items: [
           {
             slot: 1,
-            name: 'iron',
-            weight: 3000,
-            metadata: {
-              description: `name: Svetozar Miletic  \n Gender: Male`,
-              ammo: 3,
-              mustard: '60%',
-              ketchup: '30%',
-              mayo: '10%',
-            },
-            count: 5,
-          },
-          { slot: 2, name: 'powersaw', weight: 0, count: 1, metadata: { durability: 75 } },
-          { slot: 3, name: 'copper', weight: 100, count: 12, metadata: { type: 'Special' } },
-          {
-            slot: 4,
             name: 'water',
-            weight: 100,
+            weight: 200,
+            count: 1,
+            metadata: { description: 'Generic item description', durability: 50 },
+          },
+          {
+            slot: 2,
+            name: 'water',
+            weight: 200,
             count: 1,
             metadata: { description: 'Generic item description' },
           },
+          { slot: 4, name: 'water', weight: 100, count: 1, metadata: { description: 'Generic item description' } },
           { slot: 5, name: 'water', weight: 100, count: 1 },
-          {
-            slot: 6,
-            name: 'backwoods',
-            weight: 100,
-            count: 1,
-            metadata: {
-              label: 'Russian Cream',
-              imageurl: 'https://i.imgur.com/2xHhTTz.png',
-            },
-          },
+          { slot: 4, name: 'water', weight: 100, count: 1, metadata: { description: 'Generic item description' } },
         ],
       },
       rightInventory: {
-        id: 'shop',
-        type: 'crafting',
-        slots: 5000,
-        label: 'Bob Smith',
-        weight: 3000,
+        id: 'drop',
+        type: 'drop',
+        slots: 15,
+        label: 'Other eq',
+        weight: 2,
         maxWeight: 5000,
-        items: [
-          {
-            slot: 1,
-            name: 'lockpick',
-            weight: 500,
-            price: 300,
-            ingredients: {
-              iron: 5,
-              copper: 12,
-              powersaw: 0.1,
-            },
-            metadata: {
-              description: 'Simple lockpick that breaks easily and can pick basic door locks',
-            },
-          },
-        ],
+        items: [{ slot: 5, name: 'water', weight: 100, count: 1, price: '300' }],
       },
     },
   },
@@ -119,8 +88,8 @@ const App: React.FC = () => {
   );
 };
 
-addEventListener("dragstart", function(event) {
-  event.preventDefault()
-})
+addEventListener('dragstart', function (event) {
+  event.preventDefault();
+});
 
 export default App;

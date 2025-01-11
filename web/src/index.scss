@@ -1,11 +1,45 @@
 $mainColor: #22232c;
-$textColor: #c1c2c5;
+$textColor: #b8b8b8;
 $mainFont: Roboto;
 
 $secondaryColor: rgba(12, 12, 12, 0.4);
-$secondaryColorHighlight: #33343F;
+$secondaryColorHighlight: #33343f;
 $secondaryColorLight: rgba(0, 0, 0, 0.5);
 $secondaryColorDark: rgba(12, 12, 12, 0.8);
+
+$dark-0: #c9c9c9;
+$dark-1: #b8b8b8;
+$dark-2: #828282;
+$dark-3: #696969;
+$dark-4: #424242;
+$dark-5: #3b3b3b;
+$dark-6: #2e2e2e;
+$dark-7: #242424;
+$dark-8: #1f1f1f;
+$dark-9: #141414;
+
+$teal-1: #e6fcf5;
+$teal-2: #c3fae8;
+$teal-3: #96f2d7;
+$teal-4: #63e6be;
+$teal-5: #38d9a9;
+$teal-6: #20c997;
+$teal-7: #12b886;
+$teal-8: #0ca678;
+$teal-9: #099268;
+$teal-10: #087f5b;
+
+$xs: 0.125rem;
+$sm: 0.25rem;
+$md: 0.5rem;
+$lg: 1rem;
+$xl: 2rem;
+
+$s-xs: 0.625rem;
+$s-sm: 0.75rem;
+$s-md: 1rem;
+$s-lg: 1.25rem;
+$s-xl: 2rem;
 
 $gridCols: 5;
 $gridRows: 5;
@@ -58,33 +92,33 @@ input[type='number']::-webkit-outer-spin-button {
 
 .context-menu-list {
   min-width: 200px;
-  background-color: $mainColor;
-  color: $textColor;
+  background-color: $dark-7;
+  color: $dark-1;
   padding: 4px;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: inset;
-  border-width: 1px;
-  border-radius: 4px;
+  border: 2px solid $teal-9;
+  border-radius: $sm;
   outline: none;
   display: flex;
   flex-direction: column;
 }
 
-.context-menu-item  {
+.context-menu-item {
   padding: 8px;
   border-radius: 4px;
   background-color: transparent;
   outline: none;
   border: none;
-  color: $textColor;
+  color: $dark-1;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &:active {
     transform: none;
   }
+
   &:hover {
-    background-color: $secondaryColorHighlight;
+    background-color: $dark-5;
     cursor: pointer;
   }
 }
@@ -93,7 +127,7 @@ input[type='number']::-webkit-outer-spin-button {
   padding-top: 5px;
 }
 
-.tooltip-markdown > p {
+.tooltip-markdown>p {
   margin: 0;
 }
 
@@ -117,55 +151,65 @@ button:active {
 
 .inventory-wrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   height: 100%;
-
-  gap: 20px;
+  gap: $lg;
+  padding: $xl;
 }
 
 .inventory-control {
   display: flex;
+  justify-content: center;
+  background-color: $dark-7;
+  padding: $lg;
+  border-radius: $md;
+  width: 432px;
+  border: 2px solid $dark-5;
 
   .inventory-control-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
     justify-content: center;
     align-items: center;
   }
 
   .inventory-control-input {
+    border-radius: $sm;
     transition: 200ms;
-    padding: 16px 8px;
-    border-radius: 2.5%;
     font-family: $mainFont;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     outline: none;
-    border: none;
-    color: #fff;
-    background-color: $secondaryColor;
+    color: $teal-5;
+    background-color: $dark-6;
+    width: 80px;
+    padding: $md;
+    border: 2px solid $dark-5;
+
     &:focus-within {
-      background-color: $secondaryColorDark;
+      background-color: $dark-5;
+      outline: 2px solid $teal-7;
     }
   }
 
   .inventory-control-button {
+    border-radius: $sm;
     font-size: 14px;
-    color: #fff;
-    background-color: $secondaryColor;
+    color: $dark-7;
+    background-color: $teal-7;
     transition: 200ms;
-    padding: 12px 8px;
-    border-radius: 2.5%;
-    border: none;
+    padding: $md;
+    border: 2px solid $dark-5;
     text-transform: uppercase;
     font-family: $mainFont;
-    width: 100%;
+    width: 80px;
     font-weight: 500;
+
     &:hover {
-      background-color: $secondaryColorDark;
+      background-color: $teal-9;
+      cursor: pointer;
     }
   }
 }
@@ -206,6 +250,7 @@ button:active {
   align-items: center;
   border-radius: 4px;
   fill: $textColor;
+
   &:hover {
     background-color: $secondaryColorHighlight;
     cursor: pointer;
@@ -239,6 +284,7 @@ button:active {
   fill: white;
   border-radius: 5% !important;
   background-color: $secondaryColor !important;
+
   &:hover {
     background-color: $secondaryColorDark !important;
     cursor: pointer;
@@ -255,76 +301,116 @@ button:active {
 
 // Dialog is used fro useful controls window
 
-
 // inventory grids
 .inventory-grid-wrapper {
+  $igwh: 0.4rem;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: calc($gridGap * 2);
+  background-color: $dark-7;
+  padding: $s-md;
+  border-radius: $md;
+  width: 432px;
+  border: 2px solid $dark-5;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: $igwh;
+    background-color: $dark-7;
+    border-top-left-radius: $md;
+    border-top-right-radius: $md;
+  }
+
+  &[data-weight-bar-width]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: $igwh;
+    box-shadow: 0 1px 10px 1px $teal-7;
+    background-color: $teal-6;
+    width: var(--weight-bar-width, 0%);
+    transition: width 0.3s ease;
+    border-top-left-radius: $md;
+  }
 }
+
 .inventory-grid-header-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: $md $sm;
+
   p {
     font-size: 16px;
+    color: $dark-1;
   }
 }
 
 .inventory-grid-container {
   display: grid;
   height: $containerSize;
-  grid-template-columns: repeat($gridCols, $gridSize);
-  grid-auto-rows: $gridSize + 0.22vh;
-  gap: $gridGap;
+  grid-template-columns: repeat(5, 80px);
+  grid-auto-rows: 90px;
+  gap: $md;
   overflow-y: scroll;
+  flex: 1;
 }
 
 // inventory slots
 .inventory-slot {
-  background-color: $secondaryColor;
+  background-color: $dark-6;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 2.5%;
+  border-radius: $sm;
   image-rendering: -webkit-optimize-contrast;
   position: relative;
-  background-size: 7vh;
+  background-size: 3.8vh;
   color: $textColor;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: inset;
-  border-width: 1px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .inventory-slot-label-box {
-  background-color: $mainColor;
-  color: $textColor;
+  background-color: $teal-7;
+  color: $dark-9;
   text-align: center;
-  border-bottom-left-radius: 0.25vh;
-  border-bottom-right-radius: 0.25vh;
-  border-top-color: rgba(0, 0, 0, 0.2);
+  border-bottom-left-radius: $sm;
+  border-bottom-right-radius: $sm;
+  border-top-color: $dark-5;
   border-top-style: inset;
   border-top-width: 1px;
 }
 
 .inventory-slot-label-text {
+  display: flex;
+  justify-content: space-between;
   text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 2px 3px;
-  font-weight: 400;
+  font-weight: 500;
   font-family: $mainFont;
-  font-size: 12px;
+}
+
+.inventory-slot-item-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .inventory-slot-number {
-  background-color: white;
-  color: black;
-  height: 12px;
+  color: $dark-4;
   border-top-left-radius: 0.25vh;
   border-bottom-right-radius: 0.25vh;
-  padding: 3px;
-  font-size: 12px;
+  font-size: 2.3rem;
+  padding: 2px;
   font-family: $mainFont;
 }
 
@@ -333,8 +419,10 @@ button:active {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+
   p {
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: 600;
   }
 }
 
@@ -342,6 +430,8 @@ button:active {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  color: $dark-1;
+  font-weight: 600;
 }
 
 .item-hotslot-header-wrapper {
@@ -350,12 +440,12 @@ button:active {
 }
 
 .item-slot-info-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-self: flex-end;
-  padding: 3px;
-  gap: 3px;
+  padding: 2px;
+  margin: 3px;
+  border-radius: $sm;
+
   p {
+    color: $teal-6;
     font-size: 12px;
   }
 }
@@ -366,6 +456,7 @@ button:active {
   justify-content: flex-end;
   align-items: center;
   padding-right: 3px;
+
   p {
     font-size: 14px;
     text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
@@ -373,31 +464,35 @@ button:active {
 }
 
 .item-slot-price-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding-right: 3px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: flex-end;
+  // padding-right: 3px;
+
   p {
     font-size: 14px;
-    text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
+    // text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
+    font-weight: 600;
+    padding: 2px;
   }
 }
-
 
 .tooltip-wrapper {
   pointer-events: none;
   display: flex;
-  background-color: $mainColor;
+  background-color: $dark-6;
   width: 200px;
   padding: 8px;
   flex-direction: column;
   min-width: 200px;
-  color: $textColor;
+  color: $dark-1;
   font-family: $mainFont;
-  border-radius: 4px;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: inset;
-  border-width: 1px;
+  border-radius: $sm;
+  border: 2px solid $teal-7;
+
   p {
     font-size: 12px;
     font-weight: 400;
@@ -409,6 +504,7 @@ button:active {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
   p {
     font-size: 15px;
     font-weight: 400;
@@ -420,9 +516,11 @@ button:active {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   svg {
     padding-right: 3px;
   }
+
   p {
     font-size: 14px;
   }
@@ -436,6 +534,7 @@ button:active {
   display: flex;
   flex-direction: row;
   align-items: center;
+
   img {
     width: 28px;
     height: 28px;
@@ -483,13 +582,14 @@ button:active {
 
 .item-notification-action-box {
   width: 100%;
-  color: $textColor;
-  background-color: $secondaryColor;
+  color: $dark-1;
+  background-color: $dark-7;
   text-transform: uppercase;
   text-align: center;
-  border-top-left-radius: 0.25vh;
-  border-top-right-radius: 0.25vh;
+  border-top-left-radius: $sm;
+  border-top-right-radius: $sm;
   font-family: $mainFont;
+
   p {
     font-size: 11px;
     padding: 2px;
@@ -499,8 +599,8 @@ button:active {
 
 .item-notification-item-box {
   @extend .inventory-slot;
-  height: $gridSize;
-  width: $gridSize;
+  width: 120px;
+  height: 120px;
 }
 
 .durability-bar {
@@ -536,7 +636,7 @@ button:active {
 }
 
 .transition-slide-up-enter {
-  transform: translateY(200px)
+  transform: translateY(200px);
 }
 
 .transition-slide-up-enter-active {

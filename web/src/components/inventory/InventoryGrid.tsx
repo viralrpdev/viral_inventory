@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Inventory } from '../../typings';
-import WeightBar from '../utils/WeightBar';
 import InventorySlot from './InventorySlot';
 import { getTotalWeight } from '../../helpers';
 import { useAppSelector } from '../../store';
@@ -8,7 +7,7 @@ import { useIntersection } from '../../hooks/useIntersection';
 
 const PAGE_SIZE = 30;
 
-const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
+const InventoryGrid: React.FC<{ inventory: Inventory; height?: string }> = ({ inventory, height }) => {
   const weight = useMemo(
     () => (inventory.maxWeight !== undefined ? Math.floor(getTotalWeight(inventory.items) * 1000) / 1000 : 0),
     [inventory.maxWeight, inventory.items]
@@ -25,7 +24,17 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
   }, [entry]);
   return (
     <>
-      <div className="inventory-grid-wrapper" style={{ pointerEvents: isBusy ? 'none' : 'auto' }}>
+      <div
+        className="inventory-grid-wrapper"
+        data-weight-bar-width={inventory.maxWeight ? (weight / inventory.maxWeight) * 100 : 0}
+        style={
+          {
+            maxHeight: height,
+            pointerEvents: isBusy ? 'none' : 'auto',
+            '--weight-bar-width': `${inventory.maxWeight ? (weight / inventory.maxWeight) * 100 : 0}%`,
+          } as React.CSSProperties
+        }
+      >
         <div>
           <div className="inventory-grid-header-wrapper">
             <p>{inventory.label}</p>
@@ -35,7 +44,6 @@ const InventoryGrid: React.FC<{ inventory: Inventory }> = ({ inventory }) => {
               </p>
             )}
           </div>
-          <WeightBar percent={inventory.maxWeight ? (weight / inventory.maxWeight) * 100 : 0} />
         </div>
         <div className="inventory-grid-container" ref={containerRef}>
           <>
